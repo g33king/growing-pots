@@ -1,4 +1,13 @@
 # growing pots By Tikotap
+# this function is about the placing mechanism.
 
 tag @a[nbt={SelectedItem:{id:"minecraft:flower_pot",Count:1b,tag:{display:{Lore:["Can grow stuff"]}}}]}] add SelectGrowPot
-execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s ItWorkedPlacing anchored eyes positioned ^ ^ ^1 align xyz if block ~ ~ ~ #minecraft:flower_pots run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"growingPot\"",marker:1b}
+execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s placingWorked anchored eyes positioned ^ ^ ^1 align xyz if block ~ ~ ~ #minecraft:flower_pots unless entity @e[distance=..1,nbt={CustomName:"\"Growing Pot\""}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"Growing Pot\"",marker:1b}
+execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s placingWorked anchored eyes positioned ^ ^ ^2 align xyz if block ~ ~ ~ #minecraft:flower_pots unless entity @e[distance=..1,nbt={CustomName:"\"Growing Pot\""}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"Growing Pot\"",marker:1b}
+execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s placingWorked anchored eyes positioned ^ ^ ^3 align xyz if block ~ ~ ~ #minecraft:flower_pots unless entity @e[distance=..1,nbt={CustomName:"\"Growing Pot\""}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"Growing Pot\"",marker:1b}
+execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s placingWorked anchored eyes positioned ^ ^ ^4 align xyz if block ~ ~ ~ #minecraft:flower_pots unless entity @e[distance=..1,nbt={CustomName:"\"Growing Pot\""}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"Growing Pot\"",marker:1b}
+execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s placingWorked anchored eyes positioned ^ ^ ^5 align xyz if block ~ ~ ~ #minecraft:flower_pots unless entity @e[distance=..1,nbt={CustomName:"\"Growing Pot\""}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"Growing Pot\"",marker:1b}
+execute as @a[tag=SelectGrowPot,scores={placedPot=1..}] store success score @s placingWorked anchored eyes positioned ^ ^ ^ align xyz if block ~ ~ ~ #minecraft:flower_pots unless entity @e[distance=..1,nbt={CustomName:"\"Growing Pot\""}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,CustomName:"\"Growing Pot\"",marker:1b}
+tag @a[scores={placingWorked=1..}] remove SelectGrowPot
+scoreboard players set @a[scores={placingWorked=1..}] placingWorked 0
+scoreboard players set @a[scores={placedPot=1..}] placedPot 0
